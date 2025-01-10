@@ -7,18 +7,18 @@
 %undefine	with_luajit
 %endif
 
-%define		kdeappsver	24.12.0
+%define		kdeappsver	24.12.1
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		cantor
 Summary:	Cantor
 Name:		ka6-%{kaname}
-Version:	24.12.0
+Version:	24.12.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	97d3e8ccb4acf24e51de285307a8039a
+# Source0-md5:	62faa4dd05f023d46c09f063d0c80072
 URL:		https://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6Gui-devel
