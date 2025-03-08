@@ -63,7 +63,7 @@ BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Obsoletes:	ka5-%{kaname} < %{version}
-ExcludeArch:	x32
+ExcludeArch:	i686 x32
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
