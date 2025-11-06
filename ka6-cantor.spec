@@ -7,18 +7,18 @@
 %undefine	with_luajit
 %endif
 
-%define		kdeappsver	25.08.2
+%define		kdeappsver	25.08.3
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		cantor
 Summary:	Cantor
 Name:		ka6-%{kaname}
-Version:	25.08.2
-Release:	2
+Version:	25.08.3
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	bdadc51cd8722b41f5ef4dd429ba5111
+# Source0-md5:	d2e710a5d63eab8e80c7695e8153dad3
 URL:		https://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6Gui-devel
@@ -155,7 +155,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{?with_luajit:%{_datadir}/knsrcfiles/cantor_lua.knsrc}
 %attr(755,root,root) %{_bindir}/cantor_pythonserver
-%attr(755,root,root) %{_libdir}/cantor_pythonbackend.so
+%{_libdir}/cantor_pythonbackend.so
 %ghost %{_libdir}/libcantorlibs.so.28
 %{_datadir}/cantor/octave/graphic_packages.xml
 %{_datadir}/cantor/python/graphic_packages.xml
@@ -172,40 +172,40 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/cantor
 %attr(755,root,root) %{_bindir}/cantor_rserver
 %attr(755,root,root) %{_bindir}/cantor_scripteditor
-%attr(755,root,root) %{_libdir}/libcantor_config.so
-%attr(755,root,root) %{_libdir}/libcantorlibs.so.*.*.*
+%{_libdir}/libcantor_config.so
+%{_libdir}/libcantorlibs.so.*.*.*
 %dir %{_libdir}/qt6/plugins/cantor_plugins
 %dir %{_libdir}/qt6/plugins/cantor_plugins/assistants
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_advancedplotassistant.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_creatematrixassistant.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_differentiateassistant.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_eigenvaluesassistant.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_eigenvectorsassistant.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_importpackageassistant.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_integrateassistant.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_invertmatrixassistant.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_plot2dassistant.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_plot3dassistant.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_qalculateplotassistant.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_runscriptassistant.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_solveassistant.so
+%{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_advancedplotassistant.so
+%{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_creatematrixassistant.so
+%{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_differentiateassistant.so
+%{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_eigenvaluesassistant.so
+%{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_eigenvectorsassistant.so
+%{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_importpackageassistant.so
+%{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_integrateassistant.so
+%{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_invertmatrixassistant.so
+%{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_plot2dassistant.so
+%{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_plot3dassistant.so
+%{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_qalculateplotassistant.so
+%{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_runscriptassistant.so
+%{_libdir}/qt6/plugins/cantor_plugins/assistants/cantor_solveassistant.so
 %dir %{_libdir}/qt6/plugins/cantor_plugins/backends
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/backends/cantor_kalgebrabackend.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/backends/cantor_luabackend.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/backends/cantor_maximabackend.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/backends/cantor_octavebackend.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/backends/cantor_pythonbackend.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/backends/cantor_qalculatebackend.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/backends/cantor_rbackend.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/backends/cantor_sagebackend.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/backends/cantor_scilabbackend.so
+%{_libdir}/qt6/plugins/cantor_plugins/backends/cantor_kalgebrabackend.so
+%{_libdir}/qt6/plugins/cantor_plugins/backends/cantor_luabackend.so
+%{_libdir}/qt6/plugins/cantor_plugins/backends/cantor_maximabackend.so
+%{_libdir}/qt6/plugins/cantor_plugins/backends/cantor_octavebackend.so
+%{_libdir}/qt6/plugins/cantor_plugins/backends/cantor_pythonbackend.so
+%{_libdir}/qt6/plugins/cantor_plugins/backends/cantor_qalculatebackend.so
+%{_libdir}/qt6/plugins/cantor_plugins/backends/cantor_rbackend.so
+%{_libdir}/qt6/plugins/cantor_plugins/backends/cantor_sagebackend.so
+%{_libdir}/qt6/plugins/cantor_plugins/backends/cantor_scilabbackend.so
 %dir %{_libdir}/qt6/plugins/cantor_plugins/panels
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/panels/cantor_documentationpanelplugin.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/panels/cantor_filebrowserpanelplugin.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/panels/cantor_helppanelplugin.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/panels/cantor_tocpanelplugin.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/cantor_plugins/panels/cantor_variablemanagerplugin.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/kf6/parts/cantorpart.so
+%{_libdir}/qt6/plugins/cantor_plugins/panels/cantor_documentationpanelplugin.so
+%{_libdir}/qt6/plugins/cantor_plugins/panels/cantor_filebrowserpanelplugin.so
+%{_libdir}/qt6/plugins/cantor_plugins/panels/cantor_helppanelplugin.so
+%{_libdir}/qt6/plugins/cantor_plugins/panels/cantor_tocpanelplugin.so
+%{_libdir}/qt6/plugins/cantor_plugins/panels/cantor_variablemanagerplugin.so
+%{_libdir}/qt6/plugins/kf6/parts/cantorpart.so
 %{_desktopdir}/org.kde.cantor.desktop
 %dir %{_datadir}/cantor
 %{_datadir}/cantor/latex
