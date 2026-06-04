@@ -7,18 +7,18 @@
 %undefine	with_luajit
 %endif
 
-%define		kdeappsver	26.04.1
+%define		kdeappsver	26.04.2
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		cantor
 Summary:	Cantor
 Name:		ka6-%{kaname}
-Version:	26.04.1
+Version:	26.04.2
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	181bf9c440bc3ab79e42afccb8d8dee3
+# Source0-md5:	5415082cb523de9b7cb4c8df838bda20
 URL:		https://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6Gui-devel
@@ -62,7 +62,7 @@ BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Requires(post,postun):	desktop-file-utils
+Requires:	%{name}-data = %{version}-%{release}
 %requires_eq_to Qt6Core Qt6Core-devel
 Obsoletes:	ka5-%{kaname} < %{version}
 ExcludeArch:	i686 x32
@@ -102,6 +102,20 @@ Dostępne backendy:
 - projekt R do obliczeń statystycznych: http://r-project.org/
 - oprogramowanie matematyczne Sage: http://sagemath.org/
 - Scilab do obliczeń numerycznych: http://scilab.org/
+
+%package data
+Summary:	Data files for %{kaname}
+Summary(pl.UTF-8):	Dane dla %{kaname}
+Group:		X11/Applications/Editors
+Obsoletes:	ka5-%{kaname}-data < %{version}
+Requires(post,postun):	desktop-file-utils
+BuildArch:	noarch
+
+%description data
+Data files for %{kaname}.
+
+%description data -l pl.UTF-8
+Dane dla %{kaname}.
 
 %package devel
 Summary:	Header files for %{kaname} development
@@ -145,30 +159,22 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/ldconfig
+
+%post data
 %update_desktop_database_post
 
 %postun
 /sbin/ldconfig
+
+%postun data
 %update_desktop_database_postun
 
-%files -f %{kaname}.lang
+%files
 %defattr(644,root,root,755)
 %{?with_luajit:%{_datadir}/knsrcfiles/cantor_lua.knsrc}
 %attr(755,root,root) %{_bindir}/cantor_pythonserver
 %{_libdir}/cantor_pythonbackend.so
 %ghost %{_libdir}/libcantorlibs.so.28
-%{_datadir}/cantor/octave/graphic_packages.xml
-%{_datadir}/cantor/python/graphic_packages.xml
-%{_datadir}/config.kcfg/pythonbackend.kcfg
-%{_datadir}/knsrcfiles/cantor.knsrc
-%{_datadir}/knsrcfiles/cantor_kalgebra.knsrc
-%{_datadir}/knsrcfiles/cantor_maxima.knsrc
-%{_datadir}/knsrcfiles/cantor_octave.knsrc
-%{_datadir}/knsrcfiles/cantor_python.knsrc
-%{_datadir}/knsrcfiles/cantor_qalculate.knsrc
-%{_datadir}/knsrcfiles/cantor_r.knsrc
-%{_datadir}/knsrcfiles/cantor_sage.knsrc
-%{_datadir}/knsrcfiles/cantor_scilab.knsrc
 %attr(755,root,root) %{_bindir}/cantor
 %attr(755,root,root) %{_bindir}/cantor_rserver
 %attr(755,root,root) %{_bindir}/cantor_scripteditor
@@ -206,6 +212,23 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/qt6/plugins/cantor_plugins/panels/cantor_tocpanelplugin.so
 %{_libdir}/qt6/plugins/cantor_plugins/panels/cantor_variablemanagerplugin.so
 %{_libdir}/qt6/plugins/kf6/parts/cantorpart.so
+%{?with_luajit:%{_iconsdir}/hicolor/48x48/apps/luabackend.png}
+%{?with_luajit:%{_datadir}/config.kcfg/luabackend.kcfg}
+
+%files data -f %{kaname}.lang
+%defattr(644,root,root,755)
+%{_datadir}/cantor/octave/graphic_packages.xml
+%{_datadir}/cantor/python/graphic_packages.xml
+%{_datadir}/config.kcfg/pythonbackend.kcfg
+%{_datadir}/knsrcfiles/cantor.knsrc
+%{_datadir}/knsrcfiles/cantor_kalgebra.knsrc
+%{_datadir}/knsrcfiles/cantor_maxima.knsrc
+%{_datadir}/knsrcfiles/cantor_octave.knsrc
+%{_datadir}/knsrcfiles/cantor_python.knsrc
+%{_datadir}/knsrcfiles/cantor_qalculate.knsrc
+%{_datadir}/knsrcfiles/cantor_r.knsrc
+%{_datadir}/knsrcfiles/cantor_sage.knsrc
+%{_datadir}/knsrcfiles/cantor_scilab.knsrc
 %{_desktopdir}/org.kde.cantor.desktop
 %dir %{_datadir}/cantor
 %{_datadir}/cantor/latex
@@ -229,7 +252,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/48x48/apps/cantor.png
 %{_iconsdir}/hicolor/48x48/apps/juliabackend.png
 %{_iconsdir}/hicolor/48x48/apps/kalgebrabackend.png
-%{?with_luajit:%{_iconsdir}/hicolor/48x48/apps/luabackend.png}
 %{_iconsdir}/hicolor/48x48/apps/maximabackend.png
 %{_iconsdir}/hicolor/48x48/apps/octavebackend.png
 %{_iconsdir}/hicolor/48x48/apps/pythonbackend.png
@@ -239,7 +261,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/48x48/apps/scilabbackend.png
 %{_iconsdir}/hicolor/64x64/apps/cantor.png
 %{_datadir}/metainfo/org.kde.cantor.appdata.xml
-%{?with_luajit:%{_datadir}/config.kcfg/luabackend.kcfg}
 %{_datadir}/mime/packages/cantor.xml
 %{_datadir}/config.kcfg/octavebackend.kcfg.in
 %{_datadir}/knsrcfiles/cantor-documentation.knsrc
